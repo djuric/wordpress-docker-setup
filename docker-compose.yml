@@ -22,11 +22,12 @@ services:
     volumes:
       - "./wordpress:/var/www/html"
       - "./plugins:/var/www/html/wp-content/plugins"
+      - "./themes:/var/www/html/wp-content/themes"
       - "./custom.ini:/usr/local/etc/php/conf.d/custom.ini"
 
   db:
     container_name: 'wordpress-db'
-    image: mysql:5.7
+    image: mariadb:10.6.4-focal
     restart: always
     environment:
       MYSQL_DATABASE: exampledb
