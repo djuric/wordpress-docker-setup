@@ -39,6 +39,18 @@ services:
     volumes:
       - db:/var/lib/mysql
 
+  phpmyadmin:
+    container_name: 'wordpress-phpmyadmin'
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: examplepass
+    depends_on:
+      - db
+
 volumes:
   wordpress:
   db:
