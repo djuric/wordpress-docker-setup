@@ -21,9 +21,9 @@ services:
         define( 'SCRIPT_DEBUG', true );
         define( 'WP_DEVELOPMENT_MODE', true );
     volumes:
-      - "./wordpress:/var/www/html"
-      - "./plugins:/var/www/html/wp-content/plugins"
-      - "./themes:/var/www/html/wp-content/themes"
+      - "./vendor/wordpress:/var/www/html"
+      - "./src/plugins:/var/www/html/wp-content/plugins"
+      - "./src/themes:/var/www/html/wp-content/themes"
       - "./custom.ini:/usr/local/etc/php/conf.d/custom.ini"
 
   db:
@@ -49,6 +49,7 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: examplepass
+      UPLOAD_LIMIT: 2G
     depends_on:
       - db
 
