@@ -19,6 +19,7 @@ services:
       WORDPRESS_CONFIG_EXTRA: |
         define( 'WP_DEBUG_LOG', true );
         define( 'SCRIPT_DEBUG', true );
+        define( 'WP_DEVELOPMENT_MODE', true );
     volumes:
       - "./wordpress:/var/www/html"
       - "./plugins:/var/www/html/wp-content/plugins"
