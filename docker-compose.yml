@@ -6,7 +6,9 @@ services:
     container_name: 'wordpress-main'
     depends_on:
       - db
-    image: wordpress
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: on-failure
     ports:
       - 8080:80
