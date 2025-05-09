@@ -72,3 +72,25 @@ To run multiple instances of this Docker setup (e.g., for different WordPress pr
 | siteA    | 8080      | 8081       | 3306   |
 | siteB    | 8090      | 8091       | 3307   |
 | siteC    | 8100      | 8101       | 3308   |
+
+## 🛠 WP-CLI Support
+
+This setup includes [WP-CLI](https://wp-cli.org/) preinstalled in the WordPress container. You can run WP-CLI commands directly from your terminal using the provided `./wp.sh` script.
+
+First, ensure the script is executable:
+
+```bash
+chmod +x wp.sh
+```
+
+Then you can run commands like:
+
+```bash
+./wp user list
+./wp plugin install akismet --activate
+./wp post list
+```
+
+> ✅ No need to type `docker compose exec` — the script handles it for you.
+> 
+> ❗ Make sure the project is up and running via `./start.sh` before using WP-CLI commands.
