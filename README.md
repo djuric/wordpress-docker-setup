@@ -101,7 +101,6 @@ Then you can run commands like:
 
 You can import a `.sql` file into your running MySQL container using the included `mysql-import.sh` script.
 
-
 Ensure the script is executable:
 
 ```bash
@@ -131,3 +130,23 @@ Use WP-CLI's `search-replace` command:
 ```
 
 > 💡 Adjust the port (`8080`) to match your current WordPress port if needed.
+
+## 📤 Exporting the Database
+
+You can export your project's current database using the included `mysql-export.sh` script.
+
+Ensure the script is executable:
+
+```bash
+chmod +x mysql-export.sh
+```
+
+Run the export command:
+
+```bash
+./mysql-export.sh
+```
+
+This will:
+- Export the contents of your database using the credentials from `.env`
+- Save the dump as a `.sql` file in the project root directory

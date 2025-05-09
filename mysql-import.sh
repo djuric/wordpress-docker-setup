@@ -35,4 +35,9 @@ echo "🧠 Importing into DB..."
 docker compose --env-file .env -p "$PROJECT_NAME" exec db \
   sh -c "mysql -u$WORDPRESS_DB_USER -p$WORDPRESS_DB_PASSWORD $WORDPRESS_DB_NAME < /tmp/$BASENAME"
 
+if [ $? -ne 0 ]; then
+  echo "❌ Import failed. Please check your credentials or running containers."
+  exit 1
+fi
+
 echo "✅ Import complete."
