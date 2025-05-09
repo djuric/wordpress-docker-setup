@@ -20,6 +20,10 @@ PROJECT_NAME=yourproject
 WORDPRESS_PORT=8080
 PHPMYADMIN_PORT=8081
 MYSQL_PORT=3306
+
+WORDPRESS_DB_USER=exampleuser
+WORDPRESS_DB_PASSWORD=examplepass
+WORDPRESS_DB_NAME=exampledb
 ```
 
 #### 🔍 What Each Variable Does
@@ -36,8 +40,17 @@ MYSQL_PORT=3306
   Example: `http://localhost:8081`
 
 - **`MYSQL_PORT`**  
-  The port exposed on your host for connecting to the MariaDB database.  
+  The port exposed on your host for connecting to the database.  
   Useful if you plan to connect with tools like DBeaver or MySQL Workbench.
+
+- **`WORDPRESS_DB_USER`**  
+  The username for accessing the database.
+
+- **`WORDPRESS_DB_PASSWORD`**  
+  The password for accessing the database.
+
+- **`WORDPRESS_DB_NAME`**  
+  The name of the database.
 
 > **Note:** If you're running multiple instances of this setup, make sure each one uses a unique set of ports (e.g. 8080/8081/3306 for one, 8090/8091/3307 for another).
 
