@@ -11,36 +11,48 @@ git clone https://github.com/djuric/wordpress-docker-setup myproject
 cd myproject
 ```
 
-### 2. Set Up Your .env file
+### 2. Set Up Your `.env` File
 
-Edit `.env` file in the project root and configure the following variables:
+Create a `.env` file in the project root and configure the following variables:
 
-```bash
+```env
 PROJECT_NAME=yourproject
 WORDPRESS_PORT=8080
 PHPMYADMIN_PORT=8081
 MYSQL_PORT=3306
 ```
 
-`PROJECT_NAME` - The name you want to give your project. This will be used as the prefix for Docker container names.
+#### 🔍 What Each Variable Does
 
-`WORDPRESS_PORT` - The port number you want to use for the WordPress container.
+- **`PROJECT_NAME`**  
+  A unique name for your project. Used as a prefix for Docker containers, volumes, and networks to avoid conflicts with other projects.
 
-`PHPMYADMIN_PORT` - The port number you want to use for the phpMyAdmin container.
+- **`WORDPRESS_PORT`**  
+  The port on your host machine used to access the WordPress site.  
+  Example: `http://localhost:8080`
 
-`MYSQL_PORT` - The port number you want to use for the MySQL container.
+- **`PHPMYADMIN_PORT`**  
+  The port used to access phpMyAdmin (database management UI).  
+  Example: `http://localhost:8081`
+
+- **`MYSQL_PORT`**  
+  The port exposed on your host for connecting to the MariaDB database.  
+  Useful if you plan to connect with tools like DBeaver or MySQL Workbench.
+
+> **Note:** If you're running multiple instances of this setup, make sure each one uses a unique set of ports (e.g. 8080/8081/3306 for one, 8090/8091/3307 for another).
 
 ### 3. Start the Project
 
-Rather then using `docker compose` (there are multiple options to pass environment variables), use the `start.sh` script to start the project:
+Instead of using `docker compose` manually (which requires extra flags to load environment variables), use the included `start.sh` script:
 
 ```bash
 ./start.sh
 ```
+
 This will:
 
 - Load environment variables from `.env`
-- Assign a unique Docker Compose project name
+- Apply a unique Docker Compose project name using `PROJECT_NAME`
 
 
 ## 🔀 Running Multiple Instances
