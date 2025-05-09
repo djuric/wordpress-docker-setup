@@ -3,7 +3,6 @@ version: '3.1'
 services:
 
   wordpress:
-    container_name: 'wordpress-main'
     depends_on:
       - db
     build:
@@ -11,7 +10,7 @@ services:
       dockerfile: Dockerfile
     restart: on-failure
     ports:
-      - 8080:80
+      - ${WORDPRESS_PORT}:80
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: exampleuser
@@ -29,7 +28,6 @@ services:
       - "./custom.ini:/usr/local/etc/php/conf.d/custom.ini"
 
   db:
-    container_name: 'wordpress-db'
     image: mariadb:10.6.4-focal
     restart: on-failure
     environment:
@@ -38,16 +36,15 @@ services:
       MYSQL_PASSWORD: examplepass
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     ports:
-      - 3306:3306
+      - ${MYSQL_PORT}:3306
     volumes:
       - db:/var/lib/mysql
 
   phpmyadmin:
-    container_name: 'wordpress-phpmyadmin'
     image: phpmyadmin/phpmyadmin
     restart: on-failure
     ports:
-      - 8081:80
+      - ${PHPMYADMIN_PORT}:80
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: examplepass
