@@ -94,3 +94,40 @@ Then you can run commands like:
 > ✅ No need to type `docker compose exec` — the script handles it for you.
 > 
 > ❗ Make sure the project is up and running via `./start.sh` before using WP-CLI commands.
+
+---
+
+## 📥 Importing the Database
+
+You can import a `.sql` file into your running MySQL container using the included `mysql-import.sh` script.
+
+
+Ensure the script is executable:
+
+```bash
+chmod +x mysql-import.sh
+```
+
+Run the import command:
+
+```bash
+./mysql-import.sh path/to/your-database-dump.sql
+```
+
+This will:
+- Copy the SQL file into the running MySQL container
+- Run the import inside the container using credentials from your `.env` file
+
+> 💡 If you're importing a full website, make sure the database you are importing into already exists and is completely empty (i.e., contains no tables).
+
+## 🔄 Update URLs After Import (Search & Replace)
+
+After importing a database, you may need to update old URLs (e.g., from a production domain to `localhost`).
+
+Use WP-CLI's `search-replace` command:
+
+```bash
+./wp search-replace 'https://old-domain.com' 'http://localhost:8080'
+```
+
+> 💡 Adjust the port (`8080`) to match your current WordPress port if needed.
