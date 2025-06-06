@@ -6,4 +6,4 @@ if [ -z "$PROJECT_NAME" ]; then
   exit 1
 fi
 
-docker-compose --env-file .env -p "$PROJECT_NAME" up
+docker compose --env-file .env -p "$PROJECT_NAME" up
