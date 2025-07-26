@@ -132,10 +132,8 @@ After importing a database, you may need to update old URLs (e.g., from a produc
 Use WP-CLI's `search-replace` command:
 
 ```bash
-./wp search-replace 'https://old-domain.com' 'http://localhost:8080'
+./wp search-replace 'https://old-domain.com' 'http://localhost'
 ```
-
-> 💡 Adjust the port (`8080`) to match your current WordPress port if needed.
 
 ## 📤 Exporting the Database
 
