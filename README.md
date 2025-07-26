@@ -26,7 +26,7 @@ WORDPRESS_DB_PASSWORD=examplepass
 WORDPRESS_DB_NAME=exampledb
 ```
 
-**IMPORTANT**: Your `PROJECT_NAME` needs be the same as name of your project folder. Docker containers and volumes will be named based on this prefix.
+**IMPORTANT**: Your `PROJECT_NAME` needs to be the same as the name of your project folder. Docker containers and volumes will be named based on this prefix.
 
 #### 🔍 What Each Variable Does
 
