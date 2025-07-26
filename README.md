@@ -17,7 +17,7 @@ Create a `.env` file in the project root and configure the following variables:
 
 ```env
 PROJECT_NAME=yourproject
-WORDPRESS_PORT=8080
+WORDPRESS_PORT=80
 PHPMYADMIN_PORT=8081
 MYSQL_PORT=3306
 
@@ -34,8 +34,11 @@ WORDPRESS_DB_NAME=exampledb
   A unique name for your project. Used as a prefix for Docker containers, volumes, and networks to avoid conflicts with other projects.
 
 - **`WORDPRESS_PORT`**  
-  The port on your host machine used to access the WordPress site.  
-  Example: `http://localhost:8080`
+  The port on your host machine used to access the WordPress site.
+
+  Default is `80`, but you can change it to something like `8080`.
+
+  > Note: Changing this to something other than `80` will break network connection between host machine and container. This means that tools like curl will not work (hence cron jobs will not work either).
 
 - **`PHPMYADMIN_PORT`**  
   The port used to access phpMyAdmin (database management UI).  
