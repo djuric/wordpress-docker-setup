@@ -69,7 +69,6 @@ This will:
 - Load environment variables from `.env`
 - Apply a unique Docker Compose project name using `PROJECT_NAME`
 
-
 ## 🔀 Running Multiple Instances
 
 To run multiple instances of this Docker setup (e.g., for different WordPress projects), you'll need to assign **unique port numbers** for each one to avoid conflicts.
@@ -83,20 +82,14 @@ To run multiple instances of this Docker setup (e.g., for different WordPress pr
 ### 🧩 Example Port Assignments
 
 | Instance | WordPress | phpMyAdmin | MySQL |
-|----------|-----------|------------|--------|
-| siteA    | 8080      | 8081       | 3306   |
-| siteB    | 8090      | 8091       | 3307   |
-| siteC    | 8100      | 8101       | 3308   |
+| -------- | --------- | ---------- | ----- |
+| siteA    | 8080      | 8081       | 3306  |
+| siteB    | 8090      | 8091       | 3307  |
+| siteC    | 8100      | 8101       | 3308  |
 
 ## 🛠 WP-CLI Support
 
 This setup includes [WP-CLI](https://wp-cli.org/) preinstalled in the WordPress container. You can run WP-CLI commands directly from your terminal using the provided `./wp.sh` script.
-
-First, ensure the script is executable:
-
-```bash
-chmod +x wp.sh
-```
 
 Then you can run commands like:
 
@@ -107,7 +100,7 @@ Then you can run commands like:
 ```
 
 > ✅ No need to type `docker compose exec` — the script handles it for you.
-> 
+>
 > ❗ Make sure the project is up and running via `./start.sh` before using WP-CLI commands.
 
 ---
@@ -116,12 +109,6 @@ Then you can run commands like:
 
 You can import a `.sql` file into your running MySQL container using the included `mysql-import.sh` script.
 
-Ensure the script is executable:
-
-```bash
-chmod +x mysql-import.sh
-```
-
 Run the import command:
 
 ```bash
@@ -129,6 +116,7 @@ Run the import command:
 ```
 
 This will:
+
 - Copy the SQL file into the running MySQL container
 - Run the import inside the container using credentials from your `.env` file
 
@@ -150,12 +138,6 @@ Use WP-CLI's `search-replace` command:
 
 You can export your project's current database using the included `mysql-export.sh` script.
 
-Ensure the script is executable:
-
-```bash
-chmod +x mysql-export.sh
-```
-
 Run the export command:
 
 ```bash
@@ -163,5 +145,6 @@ Run the export command:
 ```
 
 This will:
+
 - Export the contents of your database using the credentials from `.env`
 - Save the dump as a `.sql` file in the project root directory
